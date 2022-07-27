@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { DataContext, SetDataContext } from "./context/DataContext";
+import Service from "./Map/Service";
+import "./App.css";
+import GetStoreData from "./api/GetStoreData";
+import { StoresProvider } from "./api/StoresProvider";
 
 function App() {
+  const [storeInfo, setStoreInfo] = useState(null);
+  // console.log(storeInfo);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StoresProvider>
+      <SetDataContext.Provider value={setStoreInfo}>
+        <DataContext.Provider value={storeInfo}>
+          <Service />
+          <GetStoreData />
+        </DataContext.Provider>
+      </SetDataContext.Provider>
+    </StoresProvider>
   );
 }
 
