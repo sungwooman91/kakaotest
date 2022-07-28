@@ -22,7 +22,6 @@ const GetStoreData = () => {
       const response = await axios.get(
         "http://leaseapi.gobikebank.com/v1/repair/shop/?product_type=&corp_sido=&corp_gugun"
       );
-      // console.log(response.data.result_data);
       setStoreData(response.data.result_data); // response.data를 storeData로 명명
     } catch (e) {
       setError(e);
@@ -46,24 +45,7 @@ const GetStoreData = () => {
 
   if (!storeData) return null;
 
-  return (
-    <>
-      <button onClick={fetchStores}>다시 불러오기</button>
-      <ul>
-        {storeData.map((store) => (
-          <li key={store.corp_name}>
-            <p>대리점명 : {store.bp_full_name}</p>
-            {/* <p>대표연락처 : {store.corp_tel}</p>
-            <p>주소 : {store.corp_address}</p>
-            <p>영업시간 : {store.business_hours}</p> */}
-            <p>Lon : {store.corp_lon}</p>
-            <p>Lat : {store.corp_lat}</p>
-            <p>서비스 구분 : {store.deal_type_text}</p>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+  return;
 };
 
 export default GetStoreData;

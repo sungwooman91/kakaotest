@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import BbServiceStore from "./BbServiceStore";
-// import MapContainer from "./MapContainer";
+
 import SelectBox from "./SelectBox";
 
 const ServiceWrap = styled.div`
@@ -23,8 +23,7 @@ const Service = () => {
           <div className="map_display">
             <BbServiceStore />
           </div>
-
-          <div className="map_text">{/* <MapContainer /> */}</div>
+          <div className="map_text">a</div>
         </div>
       </ServiceWrap>
     </>

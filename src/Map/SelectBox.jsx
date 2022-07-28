@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import GetStoreMapInfo from "./GetStoreMapInfo";
 // import styled from "styled-components";
 import Sido from "./korea.district.json";
 
 const SelectBox = () => {
   const [selectCity, setInputCity] = useState("");
   const [selectTown, setInputTown] = useState("");
+  const [searchPlace, setSearchPlace] = useState({
+    sevice: "",
+    sido: "",
+    gugun: "",
+  });
 
   const Rent = "rent";
   const Bike = "bike";
@@ -18,10 +24,16 @@ const SelectBox = () => {
   // 구군 Select 박스 상태값 저장
   const handleChangeTown = (e) => {
     setInputTown(e.target.value);
+
+    setSearchPlace((prevState) => {
+      return { ...prevState, sevice: "", sido: selectCity, gugun: selectTown };
+    });
   };
 
   // 처리 결과
+  console.log(selectCity);
   console.log(selectTown);
+  console.log(searchPlace);
 
   return (
     <>
@@ -44,7 +56,6 @@ const SelectBox = () => {
         <span>
           <select title="구/군 선택" onChange={handleChangeTown}>
             <option value="002">구/군 선택</option>
-
             {Sido.map((item) =>
               item.region === selectCity
                 ? item.gugun.map((gugunItem) => (
@@ -57,6 +68,7 @@ const SelectBox = () => {
           </select>
         </span>
       </div>
+      {/* <GetStoreMapInfo searchPlace={searchPlace} /> */}
     </>
   );
 };
